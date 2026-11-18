@@ -156,8 +156,9 @@ ruff check . && ruff format --check .
 | Decoding, checksums, amounts, scanning, restart safety, retries, `check-tx` verdicts, config errors | Tested offline on Python 3.11 and 3.13 (locally on Windows; CI runs them on Ubuntu). Log decoding is tested against a real node response |
 | `verify-presets` | Run live on all three chains on 2026-11-18 |
 | `check-tx` | Run live on BNB Smart Chain: one pass, and failures for a wrong recipient, a short amount, a wrong token and an unknown hash |
-| `watch` | Run live against a busy public address on BNB Smart Chain: 1,017 transfers across three runs, each alerted exactly once. Not run live on Ethereum or Polygon |
-| Telegram, Discord and webhook notifiers | Tested against mocked HTTP only. Not sent to a real chat or endpoint |
+| `watch` | Run live against busy public addresses on all three chains. BNB Smart Chain: 1,017 transfers across three runs, each alerted exactly once. Ethereum and Polygon: 53 and 56 transfers, none repeated on a second run |
+| Signed webhook | Run live over HTTP against a local receiver that checks every signature: 413 alerts delivered, 413 valid signatures. With a wrong secret the receiver answered 401 and the alerts stayed queued for retry |
+| Telegram and Discord notifiers | Tested against mocked HTTP only. Not sent to a real chat or channel |
 | Docker image | Built and smoke-tested by CI. Not run locally |
 
 ## Design decisions
