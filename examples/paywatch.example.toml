@@ -1,0 +1,34 @@
+# Copy to paywatch.toml and edit. Secrets are read from environment variables, not from here.
+
+database = "paywatch.sqlite3"
+poll_seconds = 15
+
+[[watch]]
+chain = "bsc"                                  # bsc, ethereum or polygon
+address = "0xYourWalletAddress"                # the address that receives payments
+tokens = ["USDT", "USDC"]
+min_amount = "1"                               # ignore anything smaller (dust and spam)
+# confirmations = 15                           # default depends on the chain
+
+# Watch as many wallets as you like:
+# [[watch]]
+# chain = "ethereum"
+# address = "0xAnotherAddress"
+# tokens = ["USDC"]
+
+# Your own RPC endpoints. The built-in public ones are rate-limited.
+# [rpc]
+# bsc = ["https://your-provider.example/bsc"]
+
+# A token that is not preset. Verify the contract address with its issuer first.
+# [[token]]
+# chain = "polygon"
+# symbol = "USDT0"
+# address = "0x..."
+# decimals = 6
+
+[notify]
+console = true
+# telegram_chat_id = "123456789"               # needs PAYWATCH_TELEGRAM_TOKEN
+# discord = true                               # needs PAYWATCH_DISCORD_WEBHOOK
+# webhook_url = "https://example.com/hooks/paywatch"   # needs PAYWATCH_WEBHOOK_SECRET
