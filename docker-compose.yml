@@ -1,0 +1,11 @@
+services:
+  paywatch:
+    build: .
+    # Put paywatch.toml in ./data. The SQLite database is written to the same folder.
+    volumes:
+      - ./data:/data
+    environment:
+      PAYWATCH_TELEGRAM_TOKEN: ${PAYWATCH_TELEGRAM_TOKEN:-}
+      PAYWATCH_DISCORD_WEBHOOK: ${PAYWATCH_DISCORD_WEBHOOK:-}
+      PAYWATCH_WEBHOOK_SECRET: ${PAYWATCH_WEBHOOK_SECRET:-}
+    restart: unless-stopped
